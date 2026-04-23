@@ -1,0 +1,75 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+#pokedex-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1100px;
+}
+
+.pokemon-card {
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.pokemon-card:hover {
+    transform: scale(1.05);
+}
+
+.pokemon-id {
+    color: #888;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.pokemon-image {
+    width: 120px;
+    height: 120px;
+}
+
+.pokemon-name {
+    text-transform: capitalize;
+    margin: 10px 0;
+    color: #333;
+}
+
+.types-container {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.type-badge {
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* Cores de tipos comuns */
+.fire { background: #ff9d55; }
+.grass { background: #63bb5b; }
+.water { background: #5090d6; }
+.poison { background: #ab6ac8; }
+.bug { background: #91c12f; }
+.flying { background: #8fa8dd; }
+.normal { background: #919aa2; }
+.electric { background: #f4d23c; }
+.fught {background: #d02b27; }
+.ice { background: #7dc2ff; }
+.dark { background: #230505; }
+.steel { background: #889da2; }

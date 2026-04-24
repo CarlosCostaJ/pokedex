@@ -11,9 +11,7 @@ class Pokemon{
             this.spriteShinyFamale = spriteShinyFamale;
         }
     }
-    toString(){
-        console.log(`${this.id}: ${this.name} (${this.types})`);
-    }
+    
 }
 
 async function fetchPokemon(){
@@ -27,8 +25,8 @@ async function fetchPokemon(){
     }
 }
 
-async function getPokemon(id_name){
-    const URL = `https://pokeapi.co/api/v2/pokemon/${id_name}/`;
+async function getPokemon(id){
+    const URL = `https://pokeapi.co/api/v2/pokemon/${id}/`;
     const response = await fetch(URL);
     if(response.status == 200 && response.ok){
         const json = await response.json();
@@ -50,7 +48,6 @@ async function getPokemon(id_name){
         } catch (error) {
             types.push(null)
         }
-        //console.log(`${name}: ${types}`);
         return pokemon = new Pokemon(id,name,types,spriteDefault,spriteShiny,spriteFemale,spriteShinyFamale);
     }
 }
@@ -68,12 +65,53 @@ function renderCard(pokemon, container) {
 
     card.innerHTML = `
         <span class="pokemon-id">#${pokemon.id.toString().padStart(3, '0')}</span>
-        <img class="pokemon-image" src="${pokemon.defaultSprite}" alt="${pokemon.name}">
+        <img class="pokemon-image" src="${pokemon.defaultSprite}" alt="${pokemon.name} ">
         <h2 class="pokemon-name">${pokemon.name}</h2>
         <div class="types-container">${typesHTML}</div>
     `;
 
+    card.addEventListener('click', () => {
+        openModal(pokemon);
+    });
+
     container.appendChild(card);
 }
+
+function openModal(pokemon) {
+    const modal = document.getElementById('pokemon-modal');
+    const modalBody = document.getElementById('modal-body');
+
+    modalBody.innerHTML = `
+        <h2 style="text-transform: capitalize;"> #${pokemon.id} ${pokemon.name} </h2>
+        <div class="modal-sprites">
+            <div>
+                <p>Normal</p>
+                <img src="${pokemon.defaultSprite}" alt="Normal">
+            </div>
+            <div>
+                <p>Shiny</p>
+                <img src="${pokemon.shinySprite}" alt="Shiny">
+            </div>
+        </div>
+        ${pokemon.spriteFemale ? `
+            <div class="modal-sprites">
+                <div>
+                    <p>Fêmea</p>
+                    <img src="${pokemon.spriteFemale}" alt="Fêmea">
+                </div>
+                <div>
+                    <p>Fêmea Shiny</p>
+                    <img src="${pokemon.spriteShinyFamale}" alt="Fêmea Shiny">
+                </div>
+            </div>
+        ` : ''}
+    `;
+
+    modal.showModal();
+}
+
+document.getElementById('close-modal').addEventListener('click', () => {
+    document.getElementById('pokemon-modal').close();
+});
 
 fetchPokemon();

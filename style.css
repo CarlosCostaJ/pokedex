@@ -60,7 +60,6 @@ body {
     font-weight: bold;
 }
 
-/* Cores de tipos comuns */
 .fire { background: #ff9d55; }
 .grass { background: #63bb5b; }
 .water { background: #5090d6; }
@@ -69,7 +68,76 @@ body {
 .flying { background: #8fa8dd; }
 .normal { background: #919aa2; }
 .electric { background: #f4d23c; }
-.fught {background: #d02b27; }
+.fighting { background: #d02b27; }
 .ice { background: #7dc2ff; }
 .dark { background: #230505; }
 .steel { background: #889da2; }
+.fairy { background: #ffc5c5; }
+.dragon { background: #1f4c6c; }
+.psychic { background: #ff74db; }
+.ghost { background: #622c95; }
+.rock { background: #dbbb67; }
+.ground{ background: #b88937; }
+
+#pokemon-modal {
+    border: none;
+    border-radius: 25px;
+    padding: 0;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 15px 60px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+#pokemon-modal::backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px); /* Deixa o fundo levemente borrado */
+}
+
+.modal-wrapper {
+    padding: 40px;
+    position: relative;
+    text-align: center;
+}
+
+#close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: #ff5555;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: background 0.2s;
+}
+
+.modal-sprites {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    background: #fdfdfd;
+    border: 1px solid #eee;
+    border-radius: 15px;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.modal-sprites img {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+    transition: transform 0.3s;
+}
+
+.modal-sprites p {
+    font-weight: bold;
+    color: #666;
+    margin-top: 5px;
+    font-size: 1rem;
+}
